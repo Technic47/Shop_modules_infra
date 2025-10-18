@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  address_module:
+    env_file:
+      - "../.env"
+    build:
+      context: ../Address_module
+    container_name: address_module
+    restart: always
+    ports:
+      - "9080:8080"
+    environment:
+      MODULE_GROUP_ID: ADDRESS_GROUP_ID
+  #    deploy:
+  #      mode: replicated
+  #      replicas: 2
+
+  product_module:
+    env_file:
+      - "../.env"
+    build:
+      context: ../Product_Module
+    container_name: product_module
+    restart: always
+    ports:
+      - "9081:8080"
+    environment:
+      MODULE_GROUP_ID: PRODUCT_GROUP_ID
+  #    deploy:
+  #      mode: replicated
+  #      replicas: 2
+
+  product_category_module:
+    env_file:
+      - "../.env"
+    build:
+      context: ../Product_category_module
+    container_name: product_category_module
+    restart: always
+    ports:
+      - "9082:8080"
+    environment:
+      MODULE_GROUP_ID: PRODUCT_CATEGORY_GROUP_ID
+  #    deploy:
+  #      mode: replicated
+  #      replicas: 2
+
+  store_module:
+    env_file:
+      - "../.env"
+    build:
+      context: ../Shop_store_module
+    container_name: store_module
+    restart: always
+    ports:
+      - "9083:8080"
+    environment:
+      MODULE_GROUP_ID: STORE_GROUP_ID
+#    deploy:
+#      mode: replicated
+#      replicas: 2
+
+  stock_module:
+    env_file:
+      - "../.env"
+    build:
+      context: ../Stock_module
+    container_name: stock_module
+    restart: always
+    ports:
+      - "9084:8080"
+    environment:
+      MODULE_GROUP_ID: STOCK_GROUP_ID
+  #    deploy:
+  #      mode: replicated
+  #      replicas: 2
+
