@@ -76,3 +76,29 @@ services:
   #      mode: replicated
   #      replicas: 2
 
+  saver_module:
+    env_file:
+      - "../.env"
+    build:
+      context: ../saver
+    container_name: saver_module
+    restart: always
+    environment:
+      MODULE_GROUP_ID: SAVER_GROUP_ID
+  #    deploy:
+  #      mode: replicated
+  #      replicas: 2
+
+  updater_module:
+    env_file:
+      - "../.env"
+    build:
+      context: ../updater
+    container_name: updater_module
+    restart: always
+    environment:
+      MODULE_GROUP_ID: UPDATER_GROUP_ID
+  #    deploy:
+  #      mode: replicated
+  #      replicas: 2
+
