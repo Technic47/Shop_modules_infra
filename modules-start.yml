@@ -76,6 +76,21 @@ services:
   #      mode: replicated
   #      replicas: 2
 
+  order_module:
+    env_file:
+      - "../.env"
+    build:
+      context: ../Order_module
+    container_name: order_module
+    restart: always
+    ports:
+      - "9084:8080"
+    environment:
+      MODULE_GROUP_ID: ORDER_GROUP_ID
+  #    deploy:
+  #      mode: replicated
+  #      replicas: 2
+
   saver_module:
     env_file:
       - "../.env"
