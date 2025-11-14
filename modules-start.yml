@@ -84,7 +84,7 @@ services:
     container_name: order_module
     restart: always
     ports:
-      - "9084:8080"
+      - "9085:8080"
     environment:
       MODULE_GROUP_ID: ORDER_GROUP_ID
   #    deploy:
@@ -117,3 +117,17 @@ services:
   #      mode: replicated
   #      replicas: 2
 
+  gate:
+    env_file:
+      - "../.env"
+    build:
+      context: ../Gate
+    container_name: gate
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      MODULE_GROUP_ID: GATE_GROUP_ID
+  #    deploy:
+  #      mode: replicated
+  #      replicas: 2
