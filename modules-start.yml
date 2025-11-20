@@ -7,7 +7,7 @@ services:
     build:
       context: ../Address_module
     container_name: address_module
-    restart: always
+    restart: on-failure
     ports:
       - "9080:8080"
     environment:
@@ -22,7 +22,7 @@ services:
     build:
       context: ../Product_Module
     container_name: product_module
-    restart: always
+    restart: on-failure
     ports:
       - "9081:8080"
     environment:
@@ -37,7 +37,7 @@ services:
     build:
       context: ../Product_category_module
     container_name: product_category_module
-    restart: always
+    restart: on-failure
     ports:
       - "9082:8080"
     environment:
@@ -52,7 +52,7 @@ services:
     build:
       context: ../Shop_store_module
     container_name: store_module
-    restart: always
+    restart: on-failure
     ports:
       - "9083:8080"
     environment:
@@ -67,7 +67,7 @@ services:
     build:
       context: ../Stock_module
     container_name: stock_module
-    restart: always
+    restart: on-failure
     ports:
       - "9084:8080"
     environment:
@@ -82,9 +82,24 @@ services:
     build:
       context: ../Order_module
     container_name: order_module
-    restart: always
+    restart: on-failure
     ports:
       - "9085:8080"
+    environment:
+      MODULE_GROUP_ID: ORDER_GROUP_ID
+  #    deploy:
+  #      mode: replicated
+  #      replicas: 2
+
+  operation_module:
+    env_file:
+      - "../.env"
+    build:
+      context: ../operation
+    container_name: operation_module
+    restart: on-failure
+    ports:
+      - "9086:8080"
     environment:
       MODULE_GROUP_ID: ORDER_GROUP_ID
   #    deploy:
@@ -97,7 +112,7 @@ services:
     build:
       context: ../saver
     container_name: saver_module
-    restart: always
+    restart: on-failure
     environment:
       MODULE_GROUP_ID: SAVER_GROUP_ID
   #    deploy:
@@ -110,7 +125,7 @@ services:
     build:
       context: ../updater
     container_name: updater_module
-    restart: always
+    restart: on-failure
     environment:
       MODULE_GROUP_ID: UPDATER_GROUP_ID
   #    deploy:
@@ -123,7 +138,7 @@ services:
     build:
       context: ../Gate
     container_name: gate
-    restart: always
+    restart: on-failure
     ports:
       - "8080:8080"
     environment:
@@ -131,3 +146,11 @@ services:
   #    deploy:
   #      mode: replicated
   #      replicas: 2
+    depends_on:
+      - address_module
+      - product_module
+      - product_category_module
+      - store_module
+      - stock_module
+      - order_module
+      - operation_module
