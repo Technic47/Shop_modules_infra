@@ -9,9 +9,10 @@ services:
     container_name: address_module
     restart: on-failure
     ports:
-      - "9080:8080"
+      - "9080:9080"
     environment:
       MODULE_GROUP_ID: ADDRESS_GROUP_ID
+      SERVICE_PORT: 9080
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -24,9 +25,10 @@ services:
     container_name: product_module
     restart: on-failure
     ports:
-      - "9081:8080"
+      - "9081:9081"
     environment:
       MODULE_GROUP_ID: PRODUCT_GROUP_ID
+      SERVICE_PORT: 9081
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -39,9 +41,10 @@ services:
     container_name: product_category_module
     restart: on-failure
     ports:
-      - "9082:8080"
+      - "9082:9082"
     environment:
       MODULE_GROUP_ID: PRODUCT_CATEGORY_GROUP_ID
+      SERVICE_PORT: 9082
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -54,9 +57,10 @@ services:
     container_name: store_module
     restart: on-failure
     ports:
-      - "9083:8080"
+      - "9083:9083"
     environment:
       MODULE_GROUP_ID: STORE_GROUP_ID
+      SERVICE_PORT: 9083
 #    deploy:
 #      mode: replicated
 #      replicas: 2
@@ -69,9 +73,10 @@ services:
     container_name: stock_module
     restart: on-failure
     ports:
-      - "9084:8080"
+      - "9084:9084"
     environment:
       MODULE_GROUP_ID: STOCK_GROUP_ID
+      SERVICE_PORT: 9084
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -84,9 +89,10 @@ services:
     container_name: order_module
     restart: on-failure
     ports:
-      - "9085:8080"
+      - "9085:9085"
     environment:
       MODULE_GROUP_ID: ORDER_GROUP_ID
+      SERVICE_PORT: 9085
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -99,9 +105,10 @@ services:
     container_name: operation_module
     restart: on-failure
     ports:
-      - "9086:8080"
+      - "9086:9086"
     environment:
       MODULE_GROUP_ID: ORDER_GROUP_ID
+      SERVICE_PORT: 9086
   #    deploy:
   #      mode: replicated
   #      replicas: 2
