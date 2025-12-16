@@ -3,7 +3,7 @@ version: '3.8'
 services:
   address_module:
     env_file:
-      - "../.env"
+      - "../remote.env"
     build:
       context: ../Address_module
     container_name: address_module
@@ -13,13 +13,12 @@ services:
     environment:
       MODULE_GROUP_ID: ADDRESS_GROUP_ID
       SERVICE_PORT: 9080
-  #    deploy:
-  #      mode: replicated
-  #      replicas: 2
+    networks:
+      postgres:
 
   product_module:
     env_file:
-      - "../.env"
+      - "../remote.env"
     build:
       context: ../Product_Module
     container_name: product_module
@@ -29,13 +28,12 @@ services:
     environment:
       MODULE_GROUP_ID: PRODUCT_GROUP_ID
       SERVICE_PORT: 9081
-  #    deploy:
-  #      mode: replicated
-  #      replicas: 2
+    networks:
+      postgres:
 
   product_category_module:
     env_file:
-      - "../.env"
+      - "../remote.env"
     build:
       context: ../Product_category_module
     container_name: product_category_module
@@ -45,13 +43,12 @@ services:
     environment:
       MODULE_GROUP_ID: PRODUCT_CATEGORY_GROUP_ID
       SERVICE_PORT: 9082
-  #    deploy:
-  #      mode: replicated
-  #      replicas: 2
+    networks:
+      postgres:
 
   store_module:
     env_file:
-      - "../.env"
+      - "../remote.env"
     build:
       context: ../Shop_store_module
     container_name: store_module
@@ -61,13 +58,12 @@ services:
     environment:
       MODULE_GROUP_ID: STORE_GROUP_ID
       SERVICE_PORT: 9083
-#    deploy:
-#      mode: replicated
-#      replicas: 2
+    networks:
+      postgres:
 
   stock_module:
     env_file:
-      - "../.env"
+      - "../remote.env"
     build:
       context: ../Stock_module
     container_name: stock_module
@@ -77,13 +73,12 @@ services:
     environment:
       MODULE_GROUP_ID: STOCK_GROUP_ID
       SERVICE_PORT: 9084
-  #    deploy:
-  #      mode: replicated
-  #      replicas: 2
+    networks:
+      postgres:
 
   order_module:
     env_file:
-      - "../.env"
+      - "../remote.env"
     build:
       context: ../Order_module
     container_name: order_module
@@ -93,13 +88,12 @@ services:
     environment:
       MODULE_GROUP_ID: ORDER_GROUP_ID
       SERVICE_PORT: 9085
-  #    deploy:
-  #      mode: replicated
-  #      replicas: 2
+    networks:
+      postgres:
 
   operation_module:
     env_file:
-      - "../.env"
+      - "../remote.env"
     build:
       context: ../operation
     container_name: operation_module
@@ -109,39 +103,39 @@ services:
     environment:
       MODULE_GROUP_ID: ORDER_GROUP_ID
       SERVICE_PORT: 9086
-  #    deploy:
-  #      mode: replicated
-  #      replicas: 2
+    networks:
+      postgres:
+      kafka-network:
 
   saver_module:
     env_file:
-      - "../.env"
+      - "../remote.env"
     build:
       context: ../saver
     container_name: saver_module
     restart: on-failure
     environment:
       MODULE_GROUP_ID: SAVER_GROUP_ID
-  #    deploy:
-  #      mode: replicated
-  #      replicas: 2
+    networks:
+      postgres:
+      kafka-network:
 
   updater_module:
     env_file:
-      - "../.env"
+      - "../remote.env"
     build:
       context: ../updater
     container_name: updater_module
     restart: on-failure
     environment:
       MODULE_GROUP_ID: UPDATER_GROUP_ID
-  #    deploy:
-  #      mode: replicated
-  #      replicas: 2
+    networks:
+      postgres:
+      kafka-network:
 
   gate:
     env_file:
-      - "../.env"
+      - "../remote.env"
     build:
       context: ../Gate
     container_name: gate
@@ -164,7 +158,7 @@ services:
 
   notification:
     env_file:
-      - "../.env"
+      - "../remote.env"
     build:
       context: ../Notification
     container_name: notification
@@ -176,3 +170,11 @@ services:
   #    deploy:
   #      mode: replicated
   #      replicas: 2
+
+networks:
+  postgres:
+    external: true
+    name: infra_postgres
+  kafka-network:
+    external: true
+    name: infra_kafka-network
