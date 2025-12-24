@@ -113,6 +113,38 @@ services:
   #      mode: replicated
   #      replicas: 2
 
+  payment_module:
+    env_file:
+      - "../.env"
+    build:
+      context: ../Payment_module
+    container_name: payment_module
+    restart: on-failure
+    ports:
+      - "9087:9087"
+    environment:
+      MODULE_GROUP_ID: PAYMENT_GROUP_ID
+      SERVICE_PORT: 9087
+  #    deploy:
+  #      mode: replicated
+  #      replicas: 2
+
+  shipment_module:
+    env_file:
+      - "../.env"
+    build:
+      context: ../Shipment_module
+    container_name: payment_module
+    restart: on-failure
+    ports:
+      - "9088:9088"
+    environment:
+      MODULE_GROUP_ID: PAYMENT_GROUP_ID
+      SERVICE_PORT: 9088
+  #    deploy:
+  #      mode: replicated
+  #      replicas: 2
+
   saver_module:
     env_file:
       - "../.env"

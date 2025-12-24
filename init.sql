@@ -1,7 +1,7 @@
 TRUNCATE
     address RESTART IDENTITY CASCADE;
-TRUNCATE
-    parameter RESTART IDENTITY CASCADE;
+-- TRUNCATE
+--     parameter RESTART IDENTITY CASCADE;
 TRUNCATE
     product RESTART IDENTITY CASCADE;
 TRUNCATE
@@ -18,6 +18,8 @@ TRUNCATE
     stock RESTART IDENTITY CASCADE;
 TRUNCATE
     store RESTART IDENTITY CASCADE;
+TRUNCATE
+    notification RESTART IDENTITY CASCADE;
 
 
 insert into address (created, updated, city, house, street)
