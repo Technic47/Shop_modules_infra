@@ -139,7 +139,7 @@ services:
     ports:
       - "9088:9088"
     environment:
-      MODULE_GROUP_ID: PAYMENT_GROUP_ID
+      MODULE_GROUP_ID: SHIPMENT_GROUP_ID
       SERVICE_PORT: 9088
   #    deploy:
   #      mode: replicated
