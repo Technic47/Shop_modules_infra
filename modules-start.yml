@@ -134,7 +134,7 @@ services:
       - "../.env"
     build:
       context: ../Shipment_module
-    container_name: payment_module
+    container_name: shipment_module
     restart: on-failure
     ports:
       - "9088:9088"
