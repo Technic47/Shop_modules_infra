@@ -1,6 +1,18 @@
 version: '3.8'
 
 services:
+  config_server:
+    env_file:
+      - "../.env"
+    build:
+      context: ../Config-server
+    container_name: config_server
+    restart: always
+    ports:
+      - "8888:8888"
+    environment:
+      SERVICE_PORT: 8888
+
   address_module:
     env_file:
       - "../.env"
@@ -13,6 +25,8 @@ services:
     environment:
       MODULE_GROUP_ID: ADDRESS_GROUP_ID
       SERVICE_PORT: 9080
+    depends_on:
+      - config_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -29,6 +43,8 @@ services:
     environment:
       MODULE_GROUP_ID: PRODUCT_GROUP_ID
       SERVICE_PORT: 9081
+    depends_on:
+      - config_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -45,6 +61,8 @@ services:
     environment:
       MODULE_GROUP_ID: PRODUCT_CATEGORY_GROUP_ID
       SERVICE_PORT: 9082
+    depends_on:
+      - config_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -61,6 +79,8 @@ services:
     environment:
       MODULE_GROUP_ID: STORE_GROUP_ID
       SERVICE_PORT: 9083
+    depends_on:
+      - config_server
 #    deploy:
 #      mode: replicated
 #      replicas: 2
@@ -77,6 +97,8 @@ services:
     environment:
       MODULE_GROUP_ID: STOCK_GROUP_ID
       SERVICE_PORT: 9084
+    depends_on:
+      - config_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -93,6 +115,8 @@ services:
     environment:
       MODULE_GROUP_ID: ORDER_GROUP_ID
       SERVICE_PORT: 9085
+    depends_on:
+      - config_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -109,6 +133,8 @@ services:
     environment:
       MODULE_GROUP_ID: ORDER_GROUP_ID
       SERVICE_PORT: 9086
+    depends_on:
+      - config_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -125,6 +151,8 @@ services:
     environment:
       MODULE_GROUP_ID: PAYMENT_GROUP_ID
       SERVICE_PORT: 9087
+    depends_on:
+      - config_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -141,6 +169,8 @@ services:
     environment:
       MODULE_GROUP_ID: SHIPMENT_GROUP_ID
       SERVICE_PORT: 9088
+    depends_on:
+      - config_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -154,6 +184,8 @@ services:
     restart: on-failure
     environment:
       MODULE_GROUP_ID: SAVER_GROUP_ID
+    depends_on:
+      - config_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -167,6 +199,8 @@ services:
     restart: on-failure
     environment:
       MODULE_GROUP_ID: UPDATER_GROUP_ID
+    depends_on:
+      - config_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -205,6 +239,8 @@ services:
       - "8088:8088"
     environment:
       MODULE_GROUP_ID: NOTIFICATION_GROUP_ID
+    depends_on:
+      - config_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
