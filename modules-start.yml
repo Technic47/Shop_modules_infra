@@ -13,6 +13,18 @@ services:
     environment:
       SERVICE_PORT: 8888
 
+  eureka_server:
+    env_file:
+      - "../.env"
+    build:
+      context: ../Eurica_server
+    container_name: eureka_server
+    restart: always
+    ports:
+      - "8761:8761"
+    environment:
+      SERVICE_PORT: 8761
+
   address_module:
     env_file:
       - "../.env"
@@ -27,6 +39,7 @@ services:
       SERVICE_PORT: 9080
     depends_on:
       - config_server
+      - eureka_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -45,6 +58,7 @@ services:
       SERVICE_PORT: 9081
     depends_on:
       - config_server
+      - eureka_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -63,6 +77,7 @@ services:
       SERVICE_PORT: 9082
     depends_on:
       - config_server
+      - eureka_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -81,6 +96,7 @@ services:
       SERVICE_PORT: 9083
     depends_on:
       - config_server
+      - eureka_server
 #    deploy:
 #      mode: replicated
 #      replicas: 2
@@ -99,6 +115,7 @@ services:
       SERVICE_PORT: 9084
     depends_on:
       - config_server
+      - eureka_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -117,6 +134,7 @@ services:
       SERVICE_PORT: 9085
     depends_on:
       - config_server
+      - eureka_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -135,6 +153,7 @@ services:
       SERVICE_PORT: 9086
     depends_on:
       - config_server
+      - eureka_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -153,6 +172,7 @@ services:
       SERVICE_PORT: 9087
     depends_on:
       - config_server
+      - eureka_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -171,6 +191,7 @@ services:
       SERVICE_PORT: 9088
     depends_on:
       - config_server
+      - eureka_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -186,6 +207,7 @@ services:
       MODULE_GROUP_ID: SAVER_GROUP_ID
     depends_on:
       - config_server
+      - eureka_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -201,6 +223,7 @@ services:
       MODULE_GROUP_ID: UPDATER_GROUP_ID
     depends_on:
       - config_server
+      - eureka_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
@@ -227,6 +250,8 @@ services:
       - stock_module
       - order_module
       - operation_module
+      - config_server
+      - eureka_server
 
   notification:
     env_file:
@@ -241,6 +266,7 @@ services:
       MODULE_GROUP_ID: NOTIFICATION_GROUP_ID
     depends_on:
       - config_server
+      - eureka_server
   #    deploy:
   #      mode: replicated
   #      replicas: 2
