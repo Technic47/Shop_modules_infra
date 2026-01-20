@@ -11,7 +11,7 @@ services:
     ports:
       - "8888:8888"
     environment:
-      SERVICE_PORT: 8888
+      CONFIG_SERVER_PORT: 8888
 
   eureka_server:
     env_file:
@@ -24,6 +24,8 @@ services:
       - "8761:8761"
     environment:
       SERVICE_PORT: 8761
+    depends_on:
+      - config_server
 
   address_module:
     env_file:
