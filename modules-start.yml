@@ -6,6 +6,7 @@ services:
       - "../.env"
     build:
       context: ../Config-server
+#    image: config-server:latest
     container_name: config_server
     restart: always
     ports:
@@ -131,6 +132,11 @@ services:
     restart: on-failure
     ports:
       - "9085:9085"
+      - "8000:8000"
+      - "5005:5005"
+    expose:
+      - "8000"
+      - "5005"
     environment:
       MODULE_GROUP_ID: ORDER_GROUP_ID
       SERVICE_PORT: 9085
@@ -239,11 +245,6 @@ services:
     restart: on-failure
     ports:
       - "8080:8080"
-      - "8000:8000"
-      - "5005:5005"
-    expose:
-      - "8000"
-      - "5005"
     environment:
       MODULE_GROUP_ID: GATE_GROUP_ID
   #    deploy:

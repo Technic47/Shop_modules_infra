@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: address-module-deployment
+  labels:
+    app: address-module
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: address-module
+  template:
+    metadata:
+      labels:
+        app: address-module
+    spec:
+      containers:
+        - name: address-module
+          image: address:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9080
+          envFrom:
+            - configMapRef:
+                name: common-config
+            - secretRef:
+                name: common-secret
+          env:
+            - name: MODULE_GROUP_ID
+              value: ADDRESS_GROUP_ID
+            - name: SERVICE_PORT
+              value: '9080'
