@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: address-module-deployment
+  name: gate-module-deployment
   labels:
-    app: address-module
+    app: gate-module
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: address-module
+      app: gate-module
   template:
     metadata:
       labels:
-        app: address-module
+        app: gate-module
     spec:
       containers:
-        - name: address-module
-          image: address:latest
+        - name: gate-module
+          image: gate:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 9080
+            - containerPort: 8080
           envFrom:
             - configMapRef:
                 name: common-config
@@ -27,6 +27,6 @@ spec:
                 name: common-secret
           env:
             - name: MODULE_GROUP_ID
-              value: ADDRESS_GROUP_ID
+              value: GATE_GROUP_ID
             - name: SERVICE_PORT
-              value: '9080'
+              value: '8080'

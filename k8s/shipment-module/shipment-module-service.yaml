@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipment-module-service
+spec:
+  selector:
+    app: shipment-module
+  ports:
+    - protocol: TCP
+      port: 9088
+      targetPort: 9088

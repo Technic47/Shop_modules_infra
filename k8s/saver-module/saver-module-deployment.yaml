@@ -1,27 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eureka-server-deployment
+  name: saver-module-deployment
   labels:
-    app: eureka-server
+    app: saver-module
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: eureka-server
+      app: saver-module
   template:
     metadata:
       labels:
-        app: eureka-server
+        app: saver-module
     spec:
       containers:
-        - name: eureka-server
-          image: eureka-server:latest
+        - name: saver-module
+          image: saver:latest
           imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8761
           envFrom:
             - configMapRef:
                 name: common-config
             - secretRef:
                 name: common-secret
+          env:
+            - name: MODULE_GROUP_ID
+              value: SAVER_GROUP_ID

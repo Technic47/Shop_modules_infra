@@ -1,27 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eureka-server-deployment
+  name: updater-module-deployment
   labels:
-    app: eureka-server
+    app: updater-module
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: eureka-server
+      app: updater-module
   template:
     metadata:
       labels:
-        app: eureka-server
+        app: updater-module
     spec:
       containers:
-        - name: eureka-server
-          image: eureka-server:latest
+        - name: updater-module
+          image: updater:latest
           imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8761
           envFrom:
             - configMapRef:
                 name: common-config
             - secretRef:
                 name: common-secret
+          env:
+            - name: MODULE_GROUP_ID
+              value: UPDATER_GROUP_ID

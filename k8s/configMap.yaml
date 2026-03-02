@@ -21,7 +21,7 @@ data:
   REDIS_HOST: 'host.docker.internal'
   REDIS_PORT: '6379'
   REDIS_PASS: '1234'
-  KEYCLOAK_URL: 'http://host.docker.internal:8180'
+  KEYCLOAK_URL: 'http://host.docker.internal:9190'
   KEYCLOAK_REALM: 'shop'
   BASE_URL: 'http://host.docker.internal'
   OPERATION_SERVICE_PORT: '9086'

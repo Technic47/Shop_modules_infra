@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-module-service
+spec:
+  selector:
+    app: product-module
+  ports:
+    - protocol: TCP
+      port: 9081
+      targetPort: 9081
