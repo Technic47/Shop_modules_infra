@@ -5,6 +5,7 @@ metadata:
 spec:
   selector:
     app: notification-module
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 8088

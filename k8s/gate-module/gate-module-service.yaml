@@ -5,6 +5,7 @@ metadata:
 spec:
   selector:
     app: gate-module
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 8080

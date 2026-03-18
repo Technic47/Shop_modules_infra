@@ -4,8 +4,8 @@ metadata:
   name: common-config
 data:
   # Key-value pairs for environment variables
-  DB_URL: 'jdbc:postgresql://host.docker.internal:5432/shop'
-  KAFKA_URL: 'host.docker.internal:9092'
+  DB_URL: 'jdbc:postgresql://192.168.1.17:5432/shop'
+  KAFKA_URL: '192.168.1.17:9092'
   ADDRESS_GROUP_ID: 'shop_address'
   PRODUCT_GROUP_ID: 'shop_product'
   PRODUCT_CATEGORY_GROUP_ID: 'shop_product_category'
@@ -18,10 +18,10 @@ data:
   NOTIFICATION_GROUP_ID: 'shop_notification'
   PAYMENT_GROUP_ID: 'shop_payment'
   SHIPMENT_GROUP_ID: 'shop_shipment'
-  REDIS_HOST: 'host.docker.internal'
+  REDIS_HOST: '192.168.1.17'
   REDIS_PORT: '6379'
   REDIS_PASS: '1234'
-  KEYCLOAK_URL: 'http://host.docker.internal:9190'
+  KEYCLOAK_URL: 'http://192.168.1.17:9190'
   KEYCLOAK_REALM: 'shop'
   BASE_URL: 'http://host.docker.internal'
   OPERATION_SERVICE_PORT: '9086'
