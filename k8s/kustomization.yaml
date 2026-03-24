@@ -1,0 +1,34 @@
+resources:
+  - configMap.yaml
+  - secrets.yaml
+
+  - config-server/config-server-deployment.yaml
+  - config-server/config-server-service.yaml
+  - eureka-server/eureka-server-deployment.yaml
+  - eureka-server/eureka-server-service.yaml
+
+  - address-module/address-module-deployment.yaml
+  - address-module/address-module-service.yaml
+  - product-category-module/product-category-module-deployment.yaml
+  - product-category-module/product-category-module-service.yaml
+  - product-module/product-module-deployment.yaml
+  - product-module/product-module-service.yaml
+  - stock-module/stock-module-deployment.yaml
+  - stock-module/stock-module-service.yaml
+  - store-module/store-module-deployment.yaml
+  - store-module/store-module-service.yaml
+  - order-module/order-module-deployment.yaml
+  - order-module/order-module-service.yaml
+  - gate-module/gate-module-deployment.yaml
+  - gate-module/gate-module-service.yaml
+
+  - saver-module/saver-module-deployment.yaml
+  - updater-module/updater-module-deployment.yaml
+  - operation-module/operation-module-deployment.yaml
+  - operation-module/operation-module-service.yaml
+  - notification-module/notification-module-deployment.yaml
+  - notification-module/notification-module-service.yaml
+  - payment-module/payment-module-deployment.yaml
+  - payment-module/payment-module-service.yaml
+  - shipment-module/shipment-module-deployment.yaml
+  - shipment-module/shipment-module-service.yaml
