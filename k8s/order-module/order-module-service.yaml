@@ -5,6 +5,7 @@ metadata:
 spec:
   selector:
     app: order-module
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 9085

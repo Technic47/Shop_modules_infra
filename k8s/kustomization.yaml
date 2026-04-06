@@ -1,11 +1,11 @@
 resources:
-  - configMap.yaml
-  - secrets.yaml
-
-  - config-server/config-server-deployment.yaml
-  - config-server/config-server-service.yaml
-  - eureka-server/eureka-server-deployment.yaml
-  - eureka-server/eureka-server-service.yaml
+#  - configMap.yaml
+#  - secrets.yaml
+#
+#  - config-server/config-server-deployment.yaml
+#  - config-server/config-server-service.yaml
+#  - eureka-server/eureka-server-deployment.yaml
+#  - eureka-server/eureka-server-service.yaml
 
   - address-module/address-module-deployment.yaml
   - address-module/address-module-service.yaml

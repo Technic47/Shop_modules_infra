@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gate-module
-          image: gate:latest
+          image: gate:1.1.5
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
