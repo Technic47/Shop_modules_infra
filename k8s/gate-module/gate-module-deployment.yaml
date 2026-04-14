@@ -16,10 +16,11 @@ spec:
     spec:
       containers:
         - name: gate-module
-          image: gate:1.1.5
+          image: gate:1.1.12
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+#            - containerPort: 5005
           envFrom:
             - configMapRef:
                 name: common-config
@@ -30,3 +31,5 @@ spec:
               value: GATE_GROUP_ID
             - name: SERVICE_PORT
               value: '8080'
+#            - name: JAVA_TOOL_OPTIONS
+#              value: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Xms512m -Xmx1024m"

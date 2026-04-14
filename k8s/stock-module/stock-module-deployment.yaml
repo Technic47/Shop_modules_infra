@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: stock-module
-          image: stock:latest
+          image: stock:1.1.6
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9084
