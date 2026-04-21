@@ -16,11 +16,25 @@ spec:
     spec:
       containers:
         - name: gate-module
-          image: gate:1.1.12
+          image: gate:1.1.14
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
 #            - containerPort: 5005
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 3
           envFrom:
             - configMapRef:
                 name: common-config

@@ -16,10 +16,24 @@ spec:
     spec:
       containers:
         - name: order-module
-          image: order:1.1.14
+          image: order:1.1.15
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9085
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 9085
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 9085
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 3
           envFrom:
             - configMapRef:
                 name: common-config

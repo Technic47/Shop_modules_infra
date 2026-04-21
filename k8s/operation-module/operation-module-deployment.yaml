@@ -20,6 +20,20 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9086
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 9086
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 9086
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 3
           envFrom:
             - configMapRef:
                 name: common-config

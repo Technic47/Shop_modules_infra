@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: saver-module
-          image: saver:latest
+          image: saver:1.1.5
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
